@@ -1,0 +1,198 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><style>:root{color-scheme:light dark}body{margin:0;font:14px system-ui}img{max-width:100%}[hidden]{display:none!important}</style></head><body><title>Eric Young</title>
+<style>
+/* Eric Young: an engineering drawing set in plain system type. The board is the drawing index, each project is a sheet with a title block.
+   Direction, tokens and components are specified in docs/r2os/development/design.md. */
+:root {
+  /* vellum theme (light) */
+  --bg: #ecebe3;
+  --surface: #f6f5ef;
+  --surface-2: #e1e0d6;
+  --line: #cdccc0;
+  --line-strong: #3a3d39;
+  --fg: #1c1f1d;
+  --muted: #595e56;
+  --accent: #8c6700;
+  --accent-ink: #fffdf5;
+  --focus: #1c1f1d;
+  --grid: rgba(40, 44, 38, .07);
+  --ok: #2b7a4b;
+  --warn: #a85a12;
+  --danger: #b3261e;
+  --info: #2b6cb0;
+  --st-idea: #666b63;
+  --st-research: #2b6cb0;
+  --st-design: #1b7585;
+  --st-prototype: #b0521a;
+  --st-test: #8b3a8c;
+  --st-done: #2b7a4b;
+  --show-logo-dark: none; --show-logo-light: block;
+  /* theme-independent */
+  --body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141615; --surface: #1b1e1c; --surface-2: #232725; --line: #343935; --line-strong: #5a615b;
+    --fg: #e9e8e1; --muted: #9da49c; --accent: #ffc400; --accent-ink: #141615; --focus: #ffc400;
+    --grid: rgba(233, 232, 225, .045);
+    --ok: #5cb57f; --warn: #e8974f; --danger: #ff7a70; --info: #6ea5e8;
+    --st-idea: #8d938c; --st-research: #6ea5e8; --st-design: #4fc1d4; --st-prototype: #e8894a; --st-test: #c97bd0; --st-done: #5cb57f;
+    --show-logo-dark: block; --show-logo-light: none;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141615; --surface: #1b1e1c; --surface-2: #232725; --line: #343935; --line-strong: #5a615b;
+  --fg: #e9e8e1; --muted: #9da49c; --accent: #ffc400; --accent-ink: #141615; --focus: #ffc400;
+  --grid: rgba(233, 232, 225, .045);
+  --ok: #5cb57f; --warn: #e8974f; --danger: #ff7a70; --info: #6ea5e8;
+  --st-idea: #8d938c; --st-research: #6ea5e8; --st-design: #4fc1d4; --st-prototype: #e8894a; --st-test: #c97bd0; --st-done: #5cb57f;
+  --show-logo-dark: block; --show-logo-light: none;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0; color: var(--fg); font: 16px/1.5 var(--body);
+  background-color: var(--bg);
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+a { color: inherit; }
+button, select, textarea, input { font: inherit; color: inherit; }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h2 { font: 700 clamp(1.35rem, 3.5vw, 1.7rem)/1.2 var(--body); }
+h3 { font: 600 .85rem/1.3 var(--body); color: var(--muted); }
+p { margin: 0; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.label { font: 600 .8rem/1.3 var(--body); color: var(--muted); }
+.num { font-variant-numeric: tabular-nums; }
+
+/* skip link: first in the tab order, off-screen until it takes focus */
+.skip-link { position: absolute; left: 16px; top: -120px; z-index: 20; display: inline-flex; align-items: center; min-height: 44px; padding: 8px 18px; background: var(--fg); color: var(--bg); font: 600 1rem/1 var(--body); }
+.skip-link:focus { top: 8px; }
+#region:focus { outline: none; }
+
+/* page frame */
+.app { max-width: 1240px; margin: 0 auto; padding: 16px 16px 64px; display: grid; gap: 20px; }
+.region { min-width: 0; display: grid; gap: 20px; align-content: start; }
+
+/* masthead: the sheet's title block for the whole index; the logo leads */
+.masthead { display: grid; grid-template-columns: minmax(0, 1fr) minmax(190px, 280px); grid-template-areas: "id owner" "nav key"; gap: 1px; background: var(--line-strong); border: 1px solid var(--line-strong); }
+.mast-cell { background: var(--surface); padding: 12px 16px; min-width: 0; display: grid; gap: 4px; align-content: start; }
+.mast-id { grid-area: id; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; }
+.mast-owner { grid-area: owner; }
+.status-key { grid-area: key; }
+.brand-logo { height: 40px; width: auto; max-width: 100%; flex: none; }
+.logo-dark { display: var(--show-logo-dark); }
+.logo-light { display: var(--show-logo-light); }
+.mast-title { font: 700 clamp(1.4rem, 4vw, 1.9rem)/1.15 var(--body); overflow-wrap: anywhere; }
+.mast-owner-line { font: 500 .95rem/1.3 var(--body); overflow-wrap: anywhere; }
+.place-nav { grid-area: nav; background: var(--surface); display: flex; flex-wrap: wrap; }
+.place { font: 600 1rem/1 var(--body); text-decoration: none; padding: 16px 20px 13px; border-right: 1px solid var(--line); color: var(--muted); }
+.place:hover { color: var(--fg); background: var(--surface-2); }
+.place[aria-current="page"] { color: var(--fg); background: var(--surface-2); box-shadow: inset 0 -3px 0 var(--accent); }
+.key-details > summary { font: 600 .8rem/1.3 var(--body); color: var(--muted); cursor: pointer; }
+.key-details[open] > summary { margin-bottom: 4px; }
+.key-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 12px; font: 500 .75rem/1.3 var(--body); }
+.key-item { display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+.key-swatch { width: 10px; height: 10px; background: var(--muted); flex: none; }
+[data-stage="idea"].key-swatch { background: var(--st-idea); }
+[data-stage="research"].key-swatch { background: var(--st-research); }
+[data-stage="design"].key-swatch { background: var(--st-design); }
+[data-stage="prototype"].key-swatch { background: var(--st-prototype); }
+[data-stage="test"].key-swatch { background: var(--st-test); }
+[data-stage="done"].key-swatch { background: var(--st-done); }
+
+/* sheets: one project each */
+.sheet-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 16px; }
+.sheet { position: relative; display: grid; grid-template-rows: auto 1fr; min-width: 0; background: var(--surface); border: 1px solid var(--line-strong); text-decoration: none; color: inherit; }
+a.sheet:hover, a.sheet:focus-visible { background: var(--surface-2); }
+.sheet-no { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 8px 12px; border-bottom: 1px solid var(--line); font: 600 max(.72rem, 12px)/1.3 var(--body); letter-spacing: .05em; text-transform: uppercase; color: var(--muted); font-variant-numeric: tabular-nums; }
+.sheet-body { padding: 14px 12px 14px; display: grid; gap: 12px; align-content: start; min-width: 0; }
+.sheet-title { font: 700 1.3rem/1.2 var(--body); overflow-wrap: anywhere; }
+
+/* title block: a real bordered grid of labelled cells */
+.title-block { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 1px; margin: 0; background: var(--line-strong); border: 1px solid var(--line-strong); }
+.title-block > div { background: var(--surface); padding: 6px 8px; min-width: 0; }
+.title-block dt { font: 600 .78rem/1.3 var(--body); color: var(--muted); }
+.title-block dd { margin: 0; font: 500 .9rem/1.35 var(--body); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+
+/* stage: a quiet six-segment track (filled up to the current stage, which takes the accent) and the stage name as plain text */
+.stage { display: flex; align-items: center; gap: 12px; }
+.stage-track { flex: 1; min-width: 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: 2px; }
+.seg { height: 6px; background: var(--line); }
+.seg.is-done { background: var(--muted); }
+.seg.is-current { background: var(--accent); box-shadow: 0 0 0 1px var(--line-strong); }
+.stage-name { font: 500 .85rem/1.2 var(--body); white-space: nowrap; }
+
+/* actions and forms */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 8px 18px; background: transparent; color: var(--fg); border: 1px solid var(--fg); border-radius: 2px; cursor: pointer; text-decoration: none; font: 600 1rem/1 var(--body); }
+.btn:hover { background: var(--surface-2); }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.btn-primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn-primary:hover { background: var(--accent); filter: brightness(1.08); }
+.field { display: grid; gap: 4px; min-width: 0; }
+.field > label, .field > .label { font: 600 .8rem/1.3 var(--body); color: var(--muted); }
+.field input, .field select, .field textarea { width: 100%; min-width: 0; min-height: 44px; padding: 8px 10px; background: var(--bg); border: 1px solid var(--line-strong); border-radius: 2px; }
+.field textarea { min-height: 110px; resize: vertical; }
+.field .hint { font-size: .85rem; color: var(--muted); }
+.panel { background: var(--surface); border: 1px solid var(--line-strong); padding: 16px; display: grid; gap: 12px; min-width: 0; align-content: start; }
+
+/* states */
+.state-loading { display: grid; gap: 12px; }
+.skeleton { min-height: 220px; border: 1px solid var(--line); background: linear-gradient(100deg, var(--surface) 30%, var(--surface-2) 50%, var(--surface) 70%) 0 0 / 300% 100%; animation: sweep 1.6s linear infinite; }
+.state-empty, .state-notfound, .state-error { max-width: 640px; border-style: dashed; }
+.state-notfound .btn, .state-empty .btn { justify-self: start; }
+.state-error { border-color: var(--danger); border-style: solid; }
+.state-error .label { color: var(--danger); }
+
+/* feedback: bottom-center, one toast at a time */
+.toast-region { position: fixed; left: 0; right: 0; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); display: grid; justify-items: center; padding-inline: 16px; pointer-events: none; z-index: 10; }
+.toast { background: var(--fg); color: var(--bg); border-left: 4px solid var(--accent); padding: 10px 16px; font: 500 .9rem/1.3 var(--body); max-width: min(100%, 520px); animation: rise .16s ease-out; }
+
+@keyframes sweep { to { background-position: -150% 0; } }
+@keyframes rise { from { transform: translateY(8px); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+@media (max-width: 600px) {
+  /* phone masthead: logo and title on one line, owner under it, places as a full-width row, the stage key folded away (about 150px tall at 375) */
+  .masthead { grid-template-columns: minmax(0, 1fr); grid-template-areas: "id" "owner" "nav" "key"; }
+  .mast-cell { padding: 6px 12px; gap: 0; }
+  .mast-id { flex-wrap: nowrap; gap: 12px; padding-bottom: 2px; }
+  .brand-logo { height: 32px; }
+  .mast-title { font-size: 1.25rem; }
+  .mast-owner { display: flex; align-items: baseline; gap: 8px; padding-top: 0; }
+  .place { flex: 1 1 0; text-align: center; padding: 14px 8px; }
+  .place:last-child { border-right: 0; }
+}
+@media (min-width: 601px) { .key-details > summary { pointer-events: none; list-style: none; } .key-details > summary::-webkit-details-marker { display: none; } }
+</style>
+
+<div class="app" id="app">
+  <header class="masthead">
+    <div class="mast-cell mast-id">
+      <img class="brand-logo logo-dark" src="brand/rearden-logo-dark.png" alt="Rearden Research">
+      <img class="brand-logo logo-light" src="brand/rearden-logo-light.png" alt="Rearden Research">
+      <h1 class="mast-title">Eric Young</h1></div>
+    <div class="mast-cell mast-owner"><p class="label">Owner</p><p class="mast-owner-line">Unassigned</p></div>
+    <nav class="place-nav" aria-label="Places"><a class="place" href="#/" aria-current="page">Board</a></nav>
+    <div class="mast-cell status-key" role="group" aria-label="Status key: six stages"><details class="key-details"><summary>Stage key</summary>
+      <ol class="key-list">
+        <li class="key-item"><span class="key-swatch" data-stage="idea"></span><span>1 Idea</span></li>
+        <li class="key-item"><span class="key-swatch" data-stage="research"></span><span>2 Research</span></li>
+        <li class="key-item"><span class="key-swatch" data-stage="design"></span><span>3 Design</span></li>
+        <li class="key-item"><span class="key-swatch" data-stage="prototype"></span><span>4 Prototype</span></li>
+        <li class="key-item"><span class="key-swatch" data-stage="test"></span><span>5 Test</span></li>
+        <li class="key-item"><span class="key-swatch" data-stage="done"></span><span>6 Done</span></li>
+      </ol></details></div>
+  </header>
+  <main class="region" id="region">
+    <div class="state-loading" role="status" aria-busy="true">
+      <p class="label">Loading the board</p>
+      <div class="sheet-grid"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div>
+    </div>
+  </main>
+</div>
+
+<script type="module" src="app/main.js"></script>
+</body></html>

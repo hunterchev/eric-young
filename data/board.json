@@ -1,0 +1,320 @@
+{
+ "schema": "eric-board/1",
+ "exportedAt": "2026-10-13",
+ "settings": {
+  "title": "Eric Young",
+  "owner": ""
+ },
+ "projects": {
+  "auto-pipe-racks": {
+   "brief": "You are the engineering assistant for the AUTO PIPE RACKS project. Eric is a senior oilfield mechanical engineer. Help him design pipe racks that ride on a laydown machine as one unit, self-level on location, tilt the top rail to a set angle so pipe rolls under gravity, meter pipe with an indexer on one end, and watch a no-go zone with a camera because pipe moves live.\n\nKnown design direction:\n- Top rail from square tubing (stiffer than a catwalk deck), hinged to the support angle like a roller-cage gate hinge.\n- Leveling posts like a jack stand (screw or hydraulic).\n- Level/angle sensor on the rail; angle set from the controls. 12 V or 24 V electrics.\n- Indexer on the end rack; camera on the no-go area.\n\nHow to work: think like a field engineer. Give sizes, load numbers, part types and vendors when you can. Ask one question at a time only when you truly cannot proceed. Keep a list of decisions made.\n\nAt the end of EVERY session, print this block exactly so it can be pasted into the dashboard:\nDASHBOARD UPDATE\nSTATUS: idea | research | design | prototype | test | done\nDONE: <what was worked out this session, 2-4 lines>\nDECIDED: <a part, vendor or design choice settled this session, or \"none\">\nNEXT: <the next concrete step>\nOPEN: <any question Eric still needs to answer>",
+   "components": [
+    "Top rail built from square tubing for stiffness instead of a traditional catwalk deck",
+    "Top rail hinged to the support angle (roller-cage style hinge) so the rail pivots to the set angle",
+    "Jack-stand style screw or hydraulic posts for self-leveling",
+    "Indexer on one end of the end rack to release one joint at a time",
+    "Inclinometer / level sensor on the top rail, angle set from the controls",
+    "Camera covering the no-go area with a stop if someone walks in",
+    "Mounting so the whole rack set rides on the laydown machine"
+   ],
+   "images": [
+    {
+     "caption": "Pipe rack photo and the four requirements: indexer, self-level + angle, no-go camera, hauled on laydown",
+     "id": "dd9b9c3fede3773644eed2d193970bcf"
+    },
+    {
+     "caption": "Top rail from square tubing, hinged to the support angle; jack stand and roller-cage hinge references",
+     "id": "d6673b0bff4e765a6f0f4e92e8a84fee"
+    }
+   ],
+   "name": "Auto Pipe Racks",
+   "next": [
+    "Sketch the rack cross-section with the hinged square-tube rail and the leveling post",
+    "Pick a leveling actuator and a level sensor that runs on 12 V or 24 V",
+    "Decide how the racks latch onto the laydown machine for transport"
+   ],
+   "order": 1,
+   "questions": [
+    "Pipe size range and max joint weight the rail must carry?",
+    "Hydraulic leveling (shares laydown power pack) or electric screw jacks?",
+    "How many racks per set and spacing between them for 30 ft and 45 ft joints?",
+    "Does the camera only alarm, or does it stop the indexer automatically?",
+    "Hinge load rating: what moment does the top rail see when a full load is tilted?"
+   ],
+   "status": "idea",
+   "summary": "Replace loose pipe racks with a set that travels on the laydown machine and sets itself up on location. The top rail self-levels, then tilts to a set angle so pipe rolls the right direction on its own. An indexer on one end meters pipe one joint at a time. A camera watches a no-go zone because pipe is moving live with nobody touching it.",
+   "tagline": "Self-leveling pipe racks with an indexer, hauled on the laydown machine as one unit.",
+   "updatedAt": "2026-10-12T15:14:54.122443+00:00"
+  },
+  "gas-monitor": {
+   "brief": "You are the engineering assistant for the 4-GAS MONITOR project. Eric is a senior oilfield mechanical engineer. Help him add a fixed four-gas monitor (H2S, LEL, O2, CO) to a pipe laydown machine.\n\nSpec so far:\n- Hard-wired to a plug on the rear of the laydown machine, wired back to the machine's own controls.\n- Controls drive a siren and a red beacon on alarm.\n- 12 V or 24 V DC system.\n\nHow to work: recommend specific detector heads, relay/4-20 mA wiring, alarm set points that match common oilfield H2S practice, and hazardous-location ratings. Keep a decisions list. Ask one question at a time only when you truly cannot proceed.\n\nAt the end of EVERY session, print this block exactly so it can be pasted into the dashboard:\nDASHBOARD UPDATE\nSTATUS: idea | research | design | prototype | test | done\nDONE: <what was worked out this session, 2-4 lines>\nDECIDED: <a part, vendor or design choice settled this session, or \"none\">\nNEXT: <the next concrete step>\nOPEN: <any question Eric still needs to answer>",
+   "components": [
+    "Fixed four-gas detector head: H2S, LEL (combustibles), O2, CO",
+    "Weatherproof plug on the rear of the laydown machine",
+    "Wiring back to the control panel, 12 V or 24 V",
+    "Siren and red beacon driven by the alarm relay",
+    "Alarm set points per gas (H2S 10 ppm low / 15 ppm high is the usual starting point)"
+   ],
+   "images": [
+    {
+     "caption": "Fixed four-gas monitor reference; hard-wired to a rear plug, back to the controls, siren and red beacon",
+     "id": "5b8612443d398f2f846d6d8242e517d4"
+    }
+   ],
+   "name": "4-Gas Monitor on Laydown",
+   "next": [
+    "Pick a 4-gas head with 4-20 mA or relay outputs that runs on 12/24 V DC",
+    "Draw the wiring from the rear plug to the control panel, siren and beacon",
+    "Set the alarm levels and write them on the panel label"
+   ],
+   "order": 3,
+   "questions": [
+    "Do the alarm relays also need to stop the laydown machine, or only alarm?",
+    "Is a hazardous-location (Class I Div 2) rated head required on this equipment?",
+    "Where does the head mount so it samples the air at the work area and not the exhaust?",
+    "Calibration: bump-test schedule and who owns the cal gas?"
+   ],
+   "status": "idea",
+   "summary": "Mount a fixed four-gas monitor (H2S, LEL, O2, CO) on the laydown machine. It hard-wires to a plug on the rear of the machine and runs back to the machine's own controls, which drive a siren and a red beacon when any gas trips its alarm level.",
+   "tagline": "Fixed four-gas detector hard-wired into the laydown machine controls with a siren and red beacon.",
+   "updatedAt": "2026-10-12T15:14:54.122443+00:00"
+  },
+  "hydraulic-catwalks": {
+   "brief": "You are the engineering assistant for the HYDRAULIC CATWALKS project. Eric is a senior oilfield mechanical engineer. Help him design a pair of hydraulic catwalks that feed a laydown machine.\n\nSpec so far:\n- MAIN catwalk: 3 hydraulic lift cylinders spread over 20 ft; sensor for level and angle; 1 cylinder that pushes pipe over the stop so it rolls to the indexer arm of the laydown machine.\n- FEEDER catwalk: a second set staged beside the main one, ready to feed the main catwalk while it is in use; same 3 lift cylinders over 20 ft, same level/angle sensor, 1 cylinder that pushes pipe over the stop onto the main catwalk.\n- Related project: Auto Pipe Racks (same level sensor and same laydown machine).\n\nHow to work: think like a field engineer. Size cylinders, estimate flow and pressure, name sensor and valve types, and keep a decisions list. Ask one question at a time only when you truly cannot proceed.\n\nAt the end of EVERY session, print this block exactly so it can be pasted into the dashboard:\nDASHBOARD UPDATE\nSTATUS: idea | research | design | prototype | test | done\nDONE: <what was worked out this session, 2-4 lines>\nDECIDED: <a part, vendor or design choice settled this session, or \"none\">\nNEXT: <the next concrete step>\nOPEN: <any question Eric still needs to answer>",
+   "components": [
+    "Main catwalk: 3 lift cylinders spread over 20 ft",
+    "Main catwalk: level and angle sensor",
+    "Main catwalk: 1 kicker cylinder to push pipe over the stop to the laydown indexer arm",
+    "Feeder catwalk: 3 lift cylinders spread over 20 ft",
+    "Feeder catwalk: level and angle sensor",
+    "Feeder catwalk: 1 kicker cylinder to push pipe over the stop onto the main catwalk",
+    "Hydraulic valve bank and controls shared with the laydown machine"
+   ],
+   "images": [
+    {
+     "caption": "Pipe rack reference and the main / feeder catwalk spec: 3 cylinders over 20 ft, level and angle sensor, 1 kicker cylinder each",
+     "id": "941702b39331ccc7f9159abd18597b30"
+    }
+   ],
+   "name": "Hydraulic Catwalks",
+   "next": [
+    "Lay out the two catwalks relative to the laydown machine on a plan view",
+    "Size the lift cylinders from the heaviest joint and the 20 ft span",
+    "Pick the level/angle sensor (same part as the Auto Pipe Racks if possible)"
+   ],
+   "order": 2,
+   "questions": [
+    "Cylinder bore, stroke and working pressure for the lift cylinders at full load?",
+    "Does the laydown machine's hydraulic pump have the flow for six lift cylinders plus two kickers?",
+    "Sequencing: does the feeder kick automatically when the main catwalk is empty, or on operator command?",
+    "Max tilt angle needed for pipe to roll reliably, and how the stop holds pipe at that angle?",
+    "Should the three lift cylinders level automatically from the sensor, or is manual leveling enough?"
+   ],
+   "status": "idea",
+   "summary": "Two hydraulic catwalks working as a pair. The main catwalk lifts on three cylinders spread over 20 ft, reads level and angle from a sensor, and uses one more cylinder to push a joint over the stop so it rolls to the indexer arm of the laydown machine. The feeder catwalk is a second set that stages the next joint while the main one is in use, and kicks pipe over onto the main catwalk the same way.",
+   "tagline": "A main and a feeder catwalk, each on three cylinders over 20 ft, with a kicker to roll pipe to the laydown indexer.",
+   "updatedAt": "2026-10-12T15:14:54.122443+00:00"
+  },
+  "norm-well-control": {
+   "brief": "You are the engineering assistant for the NORM WELL CONTROL project. Eric is a senior oilfield mechanical engineer. Help him design a NORM (naturally occurring radioactive material) detection system at the wellhead.\n\nSpec so far:\n- Two detector heads at the base of the well.\n- A remote head at the controls to set up the alarm, with an alarm and a light when NORM is detected.\n\nHow to work: explain which detector type fits (gamma scintillation vs Geiger), realistic alarm thresholds above background for oilfield NORM scale, head mounting and protection, and the wiring or wireless link to the remote unit. Keep a decisions list. Ask one question at a time only when you truly cannot proceed.\n\nAt the end of EVERY session, print this block exactly so it can be pasted into the dashboard:\nDASHBOARD UPDATE\nSTATUS: idea | research | design | prototype | test | done\nDONE: <what was worked out this session, 2-4 lines>\nDECIDED: <a part, vendor or design choice settled this session, or \"none\">\nNEXT: <the next concrete step>\nOPEN: <any question Eric still needs to answer>",
+   "components": [
+    "Two gamma detector heads (scintillation type) at the base of the well",
+    "Remote readout at the controls with alarm set-up",
+    "Alarm light and horn on detection",
+    "Cabling or wireless link from the heads to the remote unit",
+    "Background count and alarm threshold set at rig-up"
+   ],
+   "images": [
+    {
+     "caption": "Well cross-section reference; two heads at the base of the well, remote head with alarm and light",
+     "id": "7fdb5b0d27b7cc00d70b735fa36c5d60"
+    }
+   ],
+   "name": "NORM Well Control",
+   "next": [
+    "Find a ruggedized scintillation detector with an alarm relay output",
+    "Decide the alarm threshold above background with the NORM program owner",
+    "Sketch the head mounts at the wellhead base and the cable run to the controls"
+   ],
+   "order": 5,
+   "questions": [
+    "Which isotopes matter here (Ra-226 / Ra-228 scale) and what alarm threshold does the company's NORM program use?",
+    "Why two heads: redundancy, or one each side of the wellhead for coverage?",
+    "Does the alarm need to be logged with a time stamp per joint, or just light and horn?",
+    "Head mounting: how close to the wellhead can they sit and still survive mud and vibration?"
+   ],
+   "status": "idea",
+   "summary": "Detect naturally occurring radioactive material (NORM) at the wellhead as pipe and fluid come out of the hole. Two detector heads mount at the base of the well. A remote head unit at the controls sets up the alarm and shows a light when NORM is detected, so the crew knows before contaminated pipe or scale is handled.",
+   "tagline": "Two radiation heads at the base of the well with a remote alarm and light when NORM is detected.",
+   "updatedAt": "2026-10-12T15:14:54.122443+00:00"
+  },
+  "power-swivel": {
+   "brief": "You are the engineering assistant for the POWER SWIVEL SENSORS project. Eric is a senior oilfield mechanical engineer. Help him instrument a hydraulic power swivel.\n\nSpec so far:\n- Sensor on top for revolutions.\n- Pressure sensor on the hydraulic supply to tell torque.\n- Engine data from the power unit on the same readout.\n\nHow to work: explain how pressure converts to torque for a hydraulic motor, recommend a revolution sensor and a transducer that survive the swivel environment, and how to bring in engine data. Keep a decisions list. Ask one question at a time only when you truly cannot proceed.\n\nAt the end of EVERY session, print this block exactly so it can be pasted into the dashboard:\nDASHBOARD UPDATE\nSTATUS: idea | research | design | prototype | test | done\nDONE: <what was worked out this session, 2-4 lines>\nDECIDED: <a part, vendor or design choice settled this session, or \"none\">\nNEXT: <the next concrete step>\nOPEN: <any question Eric still needs to answer>",
+   "components": [
+    "Revolution sensor on top of the swivel (proximity or encoder) for RPM and turn count",
+    "Hydraulic pressure sensor on the motor circuit, converted to torque from the motor displacement",
+    "Engine data from the power unit (J1939 if available)",
+    "One display or logger for RPM, torque and engine data"
+   ],
+   "images": [
+    {
+     "caption": "Power swivel reference; sensor on top for revolutions, pressure sensor for torque, engine data",
+     "id": "25e64ce108412acbb507e71c368b4e96"
+    }
+   ],
+   "name": "Power Swivel Sensors",
+   "next": [
+    "Get the swivel motor displacement and max pressure to build the torque table",
+    "Pick the revolution sensor and the pressure transducer",
+    "Decide whether this shares the Pump Pressure Kick-Out display"
+   ],
+   "order": 7,
+   "questions": [
+    "Which swivel model and motor displacement, so pressure converts to torque correctly?",
+    "Is a running log needed (torque vs turns per connection) or only a live readout?",
+    "Does the display need to be the same unit as the pump control screen?",
+    "Where does the revolution sensor mount so it survives the swivel's wash-pipe area?"
+   ],
+   "status": "idea",
+   "summary": "Instrument a hydraulic power swivel. A sensor on top counts revolutions (RPM and total turns), a pressure sensor on the hydraulic motor supply reads out as torque, and engine data from the power unit shows on the same display.",
+   "tagline": "Revolution counter on top, pressure sensor for torque, and engine data on one readout.",
+   "updatedAt": "2026-10-12T15:14:54.122443+00:00"
+  },
+  "pump-controls": {
+   "brief": "You are the engineering assistant for the PUMP PRESSURE KICK-OUT project. Eric is a senior oilfield mechanical engineer. Help him build pump controls in two stages.\n\nSTAGE 1 (pressure kick-out):\n- 15,000 psi pressure sensor; display with live digital pressure.\n- Kick-out button shown on screen; buttons on screen to change the trip pressure.\n- Sensor may send a wireless signal for easy set-up.\n- Sensor and controls both on 12 V or 24 V.\n\nSTAGE 2 (full pump controls on the same panel): engine data, transmission data, driveshaft speed sensor for rate, vibration sensor on the pump, airflow sensor on the fan, no-go camera in the danger area, remote e-kill on the front of the pump, grease-line pressure sensor to catch a plug during use, fire/blowout camera tied to e-kill.\n\nHow to work: recommend specific transducers, controllers/HMIs, J1939 interfaces and wireless links with real part numbers when possible. Define the kick-out action chain and its timing. Keep a decisions list. Ask one question at a time only when you truly cannot proceed.\n\nAt the end of EVERY session, print this block exactly so it can be pasted into the dashboard:\nDASHBOARD UPDATE\nSTATUS: idea | research | design | prototype | test | done\nDONE: <what was worked out this session, 2-4 lines>\nDECIDED: <a part, vendor or design choice settled this session, or \"none\">\nNEXT: <the next concrete step>\nOPEN: <any question Eric still needs to answer>",
+   "components": [
+    "Stage 1: 15,000 psi pressure transducer, optionally wireless to the panel",
+    "Stage 1: display with live digital pressure",
+    "Stage 1: kick-out button on screen and set-point buttons to change trip pressure",
+    "Stage 1: 12 V or 24 V sensor and controls",
+    "Stage 2: engine data (J1939) and transmission data on the same screen",
+    "Stage 2: driveshaft speed sensor for pump rate",
+    "Stage 2: vibration sensor on the pump",
+    "Stage 2: airflow sensor on the cooling fan",
+    "Stage 2: no-go camera in the danger area",
+    "Stage 2: remote e-kill on the front of the pump",
+    "Stage 2: grease line pressure sensor to catch a plugged line during a job",
+    "Stage 2: fire / blowout camera tied to the e-kill"
+   ],
+   "images": [
+    {
+     "caption": "Pump control screen reference; Stage 1 kick-out spec and Stage 2 sensor list",
+     "id": "05a98c0a0b4f324465ac05b3f7ef2229"
+    }
+   ],
+   "name": "Pump Pressure Kick-Out",
+   "next": [
+    "Define the kick-out action chain in one line and the maximum allowed trip time",
+    "Pick the 15k transducer and the screen / controller for Stage 1",
+    "Draw the Stage 1 wiring on 12/24 V and prototype it on the bench"
+   ],
+   "order": 4,
+   "questions": [
+    "What does kick-out actually do: drop the engine to idle, open a dump valve, disengage the transmission, or all three?",
+    "Wireless sensor: what range and latency is acceptable for a 15k trip? A wired backup may be required.",
+    "Which engine and transmission (CAN / J1939 available)?",
+    "Does the fire camera trip the e-kill on its own or alarm first?",
+    "Screen: ruggedized tablet, a PLC HMI, or a purpose-built panel?"
+   ],
+   "status": "idea",
+   "summary": "Stage 1 is a pressure kick-out system for the pump: a 15,000 psi sensor feeds a screen with live pressure, a kick-out button, and buttons to change the trip pressure on the screen. The sensor may send wirelessly for easy rig-up. Everything runs on 12 V or 24 V. Stage 2 grows the same panel into full pump controls: engine and transmission data, a driveshaft rate sensor, pump vibration, fan airflow, a no-go camera in the danger area, a remote e-kill on the front of the pump, grease line pressure, and a fire/blowout camera that triggers the e-kill.",
+   "tagline": "15k pressure sensor, live digital readout, on-screen kick-out and set points. Stage 2 adds engine, drivetrain and safety sensors.",
+   "updatedAt": "2026-10-12T15:14:54.122443+00:00"
+  },
+  "radiation-grapple": {
+   "brief": "You are the engineering assistant for the RADIATION HEAD ON GRAPPLE project. Eric is a senior oilfield mechanical engineer. Help him mount a radiation detector on a material-handling grapple.\n\nSpec so far:\n- Detector head attached on top of the grapple, reading down through the base of the grapple into the material.\n- Pull-apart remote screen in the cab for the operator to turn it on and off.\n- A sticker on the machine: lift the grapple 10 ft above all material until the countdown is done; that sets the background reading.\n\nHow to work: recommend detector types that read through steel, how to set background and alarm margin, mounting and cable routing on a rotating grapple, and the operator procedure. Keep a decisions list. Ask one question at a time only when you truly cannot proceed.\n\nAt the end of EVERY session, print this block exactly so it can be pasted into the dashboard:\nDASHBOARD UPDATE\nSTATUS: idea | research | design | prototype | test | done\nDONE: <what was worked out this session, 2-4 lines>\nDECIDED: <a part, vendor or design choice settled this session, or \"none\">\nNEXT: <the next concrete step>\nOPEN: <any question Eric still needs to answer>",
+   "components": [
+    "Gamma detector head mounted on top of the grapple, aimed down through the base",
+    "Pull-apart remote screen in the cab for on/off and readout",
+    "Cable routing along the boom that survives grapple rotation",
+    "Background countdown routine: grapple held 10 ft above all material",
+    "Sticker: lift grapple 10 ft above all material until the countdown is done",
+    "Alarm when the reading exceeds background by the set margin"
+   ],
+   "images": [
+    {
+     "caption": "Grapple reference; radiation head on top shooting through the base, cab screen, 10 ft background sticker",
+     "id": "edffc524af7a891bcd7fbac0a3809f72"
+    }
+   ],
+   "name": "Radiation Head on Grapple",
+   "next": [
+    "Choose a detector head with a cab display and an alarm output",
+    "Mock up the head mount on the grapple and check the view through the base",
+    "Write the countdown / background procedure and the sticker text"
+   ],
+   "order": 6,
+   "questions": [
+    "Can the head read through the grapple base plate, or does it need a window or a gap?",
+    "How long is the background countdown, and does it re-run every shift or every load?",
+    "Hydraulic rotator on the grapple: slip ring, or does the cable have enough slack?",
+    "Where does the alarm go: cab screen only, or also a light outside for the ground crew?"
+   ],
+   "status": "idea",
+   "summary": "Mount a radiation detector head on top of a material-handling grapple so it reads through the base of the grapple into whatever it is holding. A pull-apart remote screen in the cab lets the operator switch it on and off and see the reading. A sticker on the machine tells the operator to lift the grapple 10 ft above all material until the countdown finishes, which sets the background reading.",
+   "tagline": "A detector on top of the grapple reads through the base into the material, with a cab screen to switch it on and off.",
+   "updatedAt": "2026-10-12T15:14:54.122443+00:00"
+  }
+ },
+ "log": {
+  "seed-auto-pipe-racks": {
+   "project": "auto-pipe-racks",
+   "source": "Claude",
+   "status": "idea",
+   "text": "Loaded from Eric's notes and screenshots. Summary, parts list, open questions, next steps and the Grok brief were written from those notes; nothing below this line has been checked by Eric yet.",
+   "ts": "2026-10-12T15:14:54.122443+00:00"
+  },
+  "seed-gas-monitor": {
+   "project": "gas-monitor",
+   "source": "Claude",
+   "status": "idea",
+   "text": "Loaded from Eric's notes and screenshots. Summary, parts list, open questions, next steps and the Grok brief were written from those notes; nothing below this line has been checked by Eric yet.",
+   "ts": "2026-10-12T15:14:54.122443+00:00"
+  },
+  "seed-hydraulic-catwalks": {
+   "project": "hydraulic-catwalks",
+   "source": "Claude",
+   "status": "idea",
+   "text": "Loaded from Eric's notes and screenshots. Summary, parts list, open questions, next steps and the Grok brief were written from those notes; nothing below this line has been checked by Eric yet.",
+   "ts": "2026-10-12T15:14:54.122443+00:00"
+  },
+  "seed-norm-well-control": {
+   "project": "norm-well-control",
+   "source": "Claude",
+   "status": "idea",
+   "text": "Loaded from Eric's notes and screenshots. Summary, parts list, open questions, next steps and the Grok brief were written from those notes; nothing below this line has been checked by Eric yet.",
+   "ts": "2026-10-12T15:14:54.122443+00:00"
+  },
+  "seed-power-swivel": {
+   "project": "power-swivel",
+   "source": "Claude",
+   "status": "idea",
+   "text": "Loaded from Eric's notes and screenshots. Summary, parts list, open questions, next steps and the Grok brief were written from those notes; nothing below this line has been checked by Eric yet.",
+   "ts": "2026-10-12T15:14:54.122443+00:00"
+  },
+  "seed-pump-controls": {
+   "project": "pump-controls",
+   "source": "Claude",
+   "status": "idea",
+   "text": "Loaded from Eric's notes and screenshots. Summary, parts list, open questions, next steps and the Grok brief were written from those notes; nothing below this line has been checked by Eric yet.",
+   "ts": "2026-10-12T15:14:54.122443+00:00"
+  },
+  "seed-radiation-grapple": {
+   "project": "radiation-grapple",
+   "source": "Claude",
+   "status": "idea",
+   "text": "Loaded from Eric's notes and screenshots. Summary, parts list, open questions, next steps and the Grok brief were written from those notes; nothing below this line has been checked by Eric yet.",
+   "ts": "2026-10-12T15:14:54.122443+00:00"
+  }
+ },
+ "assets": {
+  "dd9b9c3fede3773644eed2d193970bcf": "images/3.png",
+  "d6673b0bff4e765a6f0f4e92e8a84fee": "images/1.png",
+  "941702b39331ccc7f9159abd18597b30": "images/2.png",
+  "5b8612443d398f2f846d6d8242e517d4": "images/4.png",
+  "05a98c0a0b4f324465ac05b3f7ef2229": "images/5.png",
+  "7fdb5b0d27b7cc00d70b735fa36c5d60": "images/6.png",
+  "edffc524af7a891bcd7fbac0a3809f72": "images/7.png",
+  "25e64ce108412acbb507e71c368b4e96": "images/8.png"
+ }
+}

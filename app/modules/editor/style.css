@@ -1,0 +1,21 @@
+/* Editor module only; tokens come from :root (design.md). */
+.editor { display: grid; gap: 16px; max-width: 760px; }
+.editor-form { gap: 16px; }
+.editor-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.editor-slot { display: inline-flex; }
+.editor-slot:empty { display: none; }
+.form-error { margin: 0; padding: 8px 12px; border: 1px solid var(--danger); border-left-width: 4px; color: var(--danger); font: 500 .9rem/1.4 var(--body); }
+.editor-images { margin: 0; min-width: 0; }
+.editor-images legend { padding: 0 6px; }
+.image-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.image-row { display: grid; grid-template-columns: 72px minmax(0, 1fr) auto; gap: 12px; align-items: end; }
+.image-row img { width: 72px; height: 72px; object-fit: cover; border: 1px solid var(--line-strong); background: var(--surface-2); }
+.btn.is-armed { border-color: var(--danger); color: var(--danger); }
+.archive-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.archive-item { grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 8px 12px; }
+.archive-link { font: 700 1.1rem/1.2 var(--body); overflow-wrap: anywhere; }
+.archive-date { grid-column: 1; font: 400 .8rem/1.4 var(--body); color: var(--muted); }
+.archive-item .btn { grid-column: 2; grid-row: 2; }
+@media (max-width: 480px) { .image-row { grid-template-columns: 56px minmax(0, 1fr); } .image-row img { width: 56px; height: 56px; } .image-row .btn { grid-column: 1 / -1; } }
+.image-row .file-kind { display: grid; place-items: center; width: 72px; height: 72px; border: 1px solid var(--line-strong); background: var(--surface-2); }
+@media (max-width: 480px) { .image-row .file-kind { width: 56px; height: 56px; } }

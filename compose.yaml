@@ -1,0 +1,11 @@
+# Run contract: PORT=<port> docker compose -p ericboard-live up -d
+# Serves the repo read-only on 127.0.0.1 only. No persistent volumes, nothing is deleted.
+services:
+  web:
+    image: nginx:1.27-alpine
+    ports:
+      - "127.0.0.1:${PORT:-8080}:80"
+    volumes:
+      - ./:/usr/share/nginx/html:ro
+      - ./dev/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    restart: "no"
